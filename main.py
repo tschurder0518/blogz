@@ -129,8 +129,8 @@ def display():
 @app.route('/profile', methods=['GET'])
 def profile():
     user = User.query.filter_by(username=(request.args.get("user"))).first()
-    blogs = Blog.query.filter_by(username=user)
-    return render_template('profile.html',blogs=blogs)
+    blogs = Blog.query.filter_by(user=user)
+    return render_template('profile.html',blogs=blogs, user=user)
     # title=blogs.title,
      #   body=blogs.body, user=user)
 
