@@ -122,17 +122,14 @@ def signup():
 def display():
     id = request.args.get("id")
     blog = Blog.query.filter_by(id=id).first()
-    
     return render_template('single.html', title=blog.title,
-        body=blog.body)
+        body=blog.body, user=blog.user)
 
 @app.route('/profile', methods=['GET'])
 def profile():
     user = User.query.filter_by(username=(request.args.get("user"))).first()
-    blogs = Blog.query.filter_by(user=user)
+    blogs = Blog.query.filter_by(users=user.id).all()
     return render_template('profile.html',blogs=blogs, user=user)
-    # title=blogs.title,
-     #   body=blogs.body, user=user)
 
 @app.route('/newpost', methods=['POST', 'GET'])
 def add_post():
