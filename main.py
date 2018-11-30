@@ -40,9 +40,10 @@ def require_login():
 
 @app.route('/blog', methods=['POST', 'GET'])
 def list_blogs():
-    blogs = Blog.query.all()
-    return render_template('blog.html',title="Blogz",
-        blogs=blogs)
+    #blogs = Blog.query.all()
+    #users = User.query.filter_by(user=user_id).all()
+    blogs = Blog.query.all() #filter_by(users=users)
+    return render_template('blog.html',blogs=blogs)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
