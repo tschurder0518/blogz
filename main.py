@@ -44,7 +44,7 @@ def list_blogs():
     #users = User.query.filter_by(user=user_id).all()
     blogs = Blog.query.all() #filter_by(users=users)
     return render_template('blog.html',blogs=blogs)
-    
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     users = User.query.all()
